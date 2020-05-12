@@ -1,0 +1,29 @@
+<div class="container">
+    <div class="row">
+        <nav class="nav-sign-up">
+            <div class="col-xs-2">
+                <div class="logo_box">
+                        <h2 class="logo_content"><%= link_to "LOGO", public_root_path %></h2>
+                </div>
+            </div>
+            <div class="col-xs-3">
+                <div class="youkoso">
+                    <p>ようこそxxxさん</p>
+                </div>
+            </div>
+            <div class="col-xs-7">
+                 <div class="nav_links">
+                    <ul>
+                        <li class="nav-link"><%= link_to "商品一覧" %></li>
+                        <li class="nav-link"><%= link_to "会員一覧" %></li>
+                        <li class="nav-link"><%= link_to "注文履歴一覧" %></li>
+                        <li class="nav-link"><%= link_to "ジャンル管理" %></li>
+                    </ul>
+                 </div>
+            </div>
+        </nav>
+    </div>
+
+    					<%= link_to "ログアウト", destroy_admin_session_path, method: :delete%>
+</div>
+

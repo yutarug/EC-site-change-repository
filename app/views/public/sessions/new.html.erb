@@ -1,0 +1,84 @@
+<div class="container">
+    <div class="row">
+        <nav class="nav-sign-up">
+            <div class="col-xs-2">
+                <div class="logo_box">
+                        <h2 class="logo_content"><%= link_to "LOGO", public_root_path %></h2>
+                </div>
+            </div>
+            <div class="col-xs-5">
+            </div>
+            <div class="col-xs-5">
+                 <div class="nav_links">
+                    <ul>
+                        <li class="nav-link"><%= link_to "商品一覧" %></li>
+                        <li class="nav-link"><%= link_to "新規登録" %></li>
+                        <li class="nav-link"><%= link_to "ログアウト" %></li>
+                    </ul>
+                 </div>
+            </div>
+        </nav>
+    </div>
+</div>
+
+<div class="container">
+      <div class="main-sign-in">
+          <div class="row">
+                    <div class="col-xs-4">
+                        <h3>会員の方はこちらからログイン</h3>
+                    </div>
+          </div>
+          <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+
+          <div class="row">
+              <div class="col-xs-2"></div>
+              <div class="col-xs-4">
+                  <div class="field">
+                  <%= f.label :email %><br />
+                  <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+                  </div>
+              </div>
+          </div>
+
+          <div class="row">
+              <div class="col-xs-2"></div>
+              <div class="col-xs-4">
+                  <div class="field">
+                  <%= f.label :password %><br />
+                  <%= f.password_field :password, autocomplete: "current-password" %>
+                  </div>
+              </div>
+              <% if devise_mapping.rememberable? %>
+                  <div class="field">
+                        <%= f.check_box :remember_me %>
+                        <%= f.label :remember_me %>
+                  </div>
+              <% end %>
+          </div>
+
+
+          <div class="row">
+              <div class="col-xs-5"></div>
+              <div class="col-xs-2">
+                  <div class="actions">
+                      <%= f.submit "ログイン", class: "btn btn-success" %>
+                  </div>
+              </div>
+              <div class="col-xs-5">
+                  <%= link_to "=>パスワードを忘れた方はこちら", new_password_path(resource_name) %><br />
+              </div>
+          </div>
+          <% end %>
+                <h3>登録がお済みでない方</h3>
+          <div class="row">
+              <div class="col-xs-2"></div>
+              <div class="col-xs-6">
+                    <%= link_to "こちら", new_registration_path(resource_name) %>から新規登録を行ってください。
+              </div>
+          </div>
+
+
+
+
+      </div>
+</div>
