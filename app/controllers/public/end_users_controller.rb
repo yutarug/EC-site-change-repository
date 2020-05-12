@@ -5,4 +5,5 @@ class Public::EndUsersController < ApplicationController
 		@end_user = EndUser.find(params[:id])
 	end
 
+
 end
