@@ -1,28 +1,74 @@
-
-
+<%= render "public/header"%>
+<br>
 <div class="container">
     <div class="row">
-        <nav class="nav-sign-up">
-            <div class="col-xs-2">
-                <div class="logo_box">
-                        <h2 class="logo_content"><%= link_to "LOGO", public_root_path %></h2>
-                </div>
+        <div class="col-xs-2"></div>
+        <div class="col-xs-2">
+            <div class="my-page bg-info">
+                <h3>マイページ</h3>
             </div>
-            <div class="col-xs-5">
-                <div class="youkoso">
-                    <p>ようこそxxxさん</p>
-                </div>
-            </div>
-            <div class="col-xs-5">
-                 <div class="nav_links">
-                    <ul>
-                        <li class="nav-link"><%= link_to "マイページ",public_end_user_path(@end_user.id) %></li>
-                        <li class="nav-link"><%= link_to "商品一覧" %></li>
-                        <li class="nav-link"><%= link_to "カート" %></li>
-                        <li class="nav-link"><%= link_to "ログアウト", destroy_end_user_session_path,method: :delete %></li>
-                    </ul>
-                 </div>
-            </div>
-        </nav>
+        </div>
+    </div>     <br>
+
+    <div class="row">
+        <div class="col-xs-2">
+            <h3><b>登録情報</b></h3>
+        </div>
+        <div class="col-xs-2">
+            <p class="btn btn-info"><%= link_to "編集する", edit_public_end_user_path(@end_user.id)%></p>
+        </div>
+        <div class="col-xs-2">
+            <p class="btn btn-info">パスワードを編集する</p>
+        </div>
     </div>
+
+    <div class="row">
+        <div class="col-xs-6">
+            <table class="table">
+                <tr>
+                    <td>氏名</td>
+                    <td><%= @end_user.first_name %><%= @end_user.second_name %></td>
+                </tr>
+                <tr>
+                    <td>カナ</td>
+                    <td><%= @end_user.first_name_kana%><%= @end_user.second_name_kana %></td>
+                </tr>
+                <tr>
+                    <td>郵便番号</td>
+                    <td><%= @end_user.postal_code %></td>
+                </tr>
+                <tr>
+                    <td>住所</td>
+                    <td><%= @end_user.street_address %></td>
+                </tr>
+                <tr>
+                    <td>電話番号</td>
+                    <td><%= @end_user.phone_number%></td>
+                </tr><tr>
+                    <td>メールアドレス</td>
+                    <td><%= @end_user.email %></td>
+                </tr>
+            </table>
+        </div>
+    </div>  <br><br>
+
+    <div class="row">
+        <div class="col-xs-2">
+            <h3><b>配送先</b></h3>
+        </div>
+        <div class="col-xs-2">
+            <p class="btn btn-success">一覧を見る</p>
+        </div>
+    </div>
+
+     <div class="row">
+        <div class="col-xs-2">
+            <h3><b>注文一覧</b></h3>
+        </div>
+        <div class="col-xs-2">
+            <p class="btn btn-success">一覧を見る</p>
+        </div>
+    </div>
+
+
 </div>

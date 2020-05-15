@@ -1,0 +1,27 @@
+退会確認ページ
+<%= render "public/header"%>
+<br><br><br>
+<div class="containe">
+	<div class="row">
+		<div class="col-xs-4"></div>
+		<div class="col-xs-4"><h3><b>本当に退会しますか？</b></h3></div>
+	</div>
+	<br><br>
+
+	<div class="row">
+		<div class="col-xs-4"></div>
+		<div class="col-xs-4">
+			<p class="confirm-text"><b>退会すると、会員登録情報や<br>
+			これまでの購入履歴が閲覧できなくなります。<br>
+		    退会する場合は「退会する」をクリックしてください。</b></p>
+		</div>
+	</div>
+		<br>
+
+		<div class="row">
+			<div class="col-xs-4"></div>
+			<div class="col-xs-2"><p class="btn btn-info"><%= link_to "退会しない",public_end_user_path(@end_user)%></p></div>
+			<div class="col-xs-2"><p class="btn btn-danger"><%= link_to "退会する",public_end_user_path(@end_user), method: :delete, data: { confirm: 'Are you sure?' }%></p></div>
+		</div>
+	</div>
+</div>
