@@ -5,19 +5,20 @@ class Public::EndUsersController < ApplicationController
 		@end_user = current_end_user
 	end
 	def show
-		@end_user = EndUser.find(params[:id])
+		@end_user = current_end_user
 	end
 	def edit
-		@end_user = EndUser.find(params[:id])
+		@end_user = current_end_user
 	end
 	def update
-		@end_user = EndUser.find(params[:id])
+		@end_user = current_end_user
 		@end_user.update(end_user_params)
 		redirect_to public_end_user_path(@end_user.id)
 	end
 	def destroy
-		end_user = EndUser.find(params[:id])
+		end_user = current_end_user
 		end_user.is_deleted = true
+		end_user.update(is_deleted:true)
 		end_user.destroy
 		redirect_to public_root_path
 	end

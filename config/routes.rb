@@ -22,7 +22,9 @@ Rails.application.routes.draw do
   namespace :public,path: "" do
     root to:"end_users#top"
     get "/end_users/confirm" => "end_users#confirm"
-    resources :end_users
+    get "/end_users/my_page" => "end_users#show",as: "end_user"
+    get "end_users/my_page/edit" => "end_users#edit",as: "edit_end_user"
+    resources :end_users, :only => [ :update, :destroy]
     resources :items
 
   end
