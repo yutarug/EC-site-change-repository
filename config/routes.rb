@@ -16,13 +16,14 @@ Rails.application.routes.draw do
   namespace :admin do
     get "/top" => "top#top"
     resources :end_users
-  	#get "top" => "#top"
+  	resources :genres
   end
 
   namespace :public,path: "" do
     root to:"end_users#top"
     get "/end_users/confirm" => "end_users#confirm"
     resources :end_users
+    resources :items
 
   end
 end

@@ -1,0 +1,23 @@
+<%= render "public/header",end_user:@end_user%>
+<br>
+<div class="container">
+	<div class="row">
+		<div class="col-xs-3">
+			<div class="genre-box">
+				<h3 class="genre-search"><b>ジャンル検索</b></h3>
+			</div>
+		</div>
+		<div class="col-xs-9">
+			<h2><b>商品一覧</b></h2><br>
+			<% @items.each do |f| %>
+				<div class="col-xs-2">
+					<div class="item-box">
+						<%= attachment_image_tag f, :image,  :fill, 60, 60%>
+						<%= f.name %>
+						<%= f.price %>
+					</div>
+				</div>
+			<% end %>
+		</div>
+	</div>
+</div>

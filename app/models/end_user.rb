@@ -6,4 +6,5 @@ class EndUser < ApplicationRecord
 
          validates :first_name, :second_name, :first_name_kana, :second_name_kana,
          		   :postal_code, :street_address, :phone_number,  presence: true
+         acts_as_paranoid
 end
