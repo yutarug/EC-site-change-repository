@@ -18,7 +18,6 @@ class Public::EndUsersController < ApplicationController
 	def destroy
 		end_user = EndUser.find(params[:id])
 		end_user.is_deleted = true
-		binding.pry
 		end_user.destroy
 		redirect_to public_root_path
 	end

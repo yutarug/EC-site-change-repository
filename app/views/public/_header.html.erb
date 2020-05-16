@@ -8,16 +8,16 @@
             </div>
             <div class="col-xs-5">
                 <div class="youkoso">
-                    <p>ようこそxxxさん</p>
+                    <p>ようこそ<%= end_user.first_name%><%= end_user.second_name%>さん</p>
                 </div>
             </div>
             <div class="col-xs-5">
                  <div class="nav_links">
                     <ul>
-                        <li class="nav-link"><%= link_to "マイページ" %></li>
+                        <li class="nav-link"><%= link_to "マイページ",public_end_user_path(end_user.id) %></li>
                         <li class="nav-link"><%= link_to "商品一覧" %></li>
                         <li class="nav-link"><%= link_to "カート" %></li>
-                        <li class="nav-link"><%= link_to "ログアウト" %></li>
+                        <li class="nav-link"><%= link_to "ログアウト", destroy_end_user_session_path, method: :delete %></li>
                     </ul>
                  </div>
             </div>
