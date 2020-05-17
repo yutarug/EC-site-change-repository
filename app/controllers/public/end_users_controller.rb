@@ -13,7 +13,7 @@ class Public::EndUsersController < ApplicationController
 	def update
 		@end_user = current_end_user
 		@end_user.update(end_user_params)
-		redirect_to public_end_user_path(@end_user.id)
+		redirect_to public_end_user_path
 	end
 	def destroy
 		end_user = current_end_user
