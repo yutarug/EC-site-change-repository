@@ -1,0 +1,25 @@
+<%= render "admin/header"%>
+<br>
+<div class="container">
+	<div class="row">
+		<div class="col-xs-3">
+			<h3>ジャンル編集画面</h3>
+		</div>
+	</div>
+	<div class="row">
+		<%= form_for(@genre,url:admin_genre_path,method: :patch) do |f| %>
+			<div class="col-xs-2">
+				<%= f.text_field :name%>
+			</div>
+			<div class="col-xs-1">
+  						<%= f.radio_button :effectice_status, :true %>
+  						<%= f.label :gender, "有効", {value: :true, style: "display: inline-block;"} %>
+  						<%= f.radio_button :effectice_status, :false %>
+  						<%= f.label :gender, "無効", {value: :false, style: "display: inline-block;"} %><!-- ラジオボタンで有効、無効 -->
+			</div>
+			<div class="col-xs-1">
+				<%= f.submit "追加",class:"btn btn-info"%>
+			</div>
+		<% end %>
+	</div>
+</div>

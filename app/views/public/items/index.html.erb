@@ -1,0 +1,31 @@
+<%= render "public/header",end_user:@end_user%>
+<div class="container">
+	<div class="col-xs-3">
+		<div class="genre-box clearfix">
+			<table class="table table-striped">
+				<thead>
+					<tr><h3>ジャンル検索</h3></tr>
+				</thead>
+				<% @genres.each do |genre| %>
+					<tbody>
+						<tr>
+							<td><%= genre.name%></td>
+						</tr>
+					</tbody>
+				<% end %>
+			</table>
+		</div>
+	</div>
+	<div class="col-xs-8">
+		<div class="items-box clearfix">
+			<h3>商品一覧</h3>
+			<% @items.each do |item|%>
+				<div class="item-box">
+					<%= attachment_image_tag item, :image, size:"100x100",format: "jpeg",fallback: "no_image.jpg"%><br>
+					<%= item.name %><br>
+				    ¥<%= item.price%> <br>
+				</div>
+			<% end%>
+		</div>
+	</div>
+</div>

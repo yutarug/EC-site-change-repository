@@ -5,10 +5,10 @@ class Public::EndUsersController < ApplicationController
 		@end_user = current_end_user
 	end
 	def show
-		@end_user = EndUser.find(params[:id])
+		@end_user = current_end_user
 	end
 	def edit
-		@end_user = EndUser.find(params[:id])
+		@end_user = current_end_user
 	end
 	def update
 		@end_user = EndUser.find(params[:id])

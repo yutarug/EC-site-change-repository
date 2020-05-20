@@ -1,0 +1,35 @@
+<%= render "admin/header"%>
+<br>
+<div class="container">
+	<div class="row">
+		<h3>商品新規登録一覧</h3>
+	</div>
+	<br>
+		<%= form_for(@item,url: admin_items_path, method: :post) do |f| %>
+			<div class="row">
+				<div class="col-xs-4">
+					<%= f.attachment_field :image %>
+				</div>
+				<div class="col-xs-2 ">
+					<%= f.label :商品名%><br><br>
+					<%= f.label :商品説明%><br><br>
+					<%= f.label :ジャンル%><br><br>
+					<%= f.label :商品価格%><br><br>
+					<%= f.label :販売ステータス　%><br><br>
+				</div>
+				<div class="col-xs-4">
+					<%= f.text_field :name,autofocus: true %><br><br>
+					<%= f.text_area :introduction%><br><br>
+					 <%= f.collection_select :genre_id, Genre.where(effectice_status:false),:id, :name %><br><br>
+					 <%= f.text_field :price %>円<br><br>
+					 <%= select :status, :name,Item.statuses.keys.to_a %>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-xs-10"></div>
+				<div class="col-xs-2">
+					<%= f.submit "新規登録", class:"btn btn-info"%>
+				</div>
+			</div>
+		<% end %>
+</div>
