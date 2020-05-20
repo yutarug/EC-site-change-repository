@@ -11,6 +11,8 @@ class Admin::ItemsController < ApplicationController
 		redirect_to admin_item_path(@item.id)
 	end
 	def show
+		
+		@item = Item.find(params[:id])
 	end
 
 	private
