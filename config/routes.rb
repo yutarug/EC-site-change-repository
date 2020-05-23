@@ -28,5 +28,6 @@ Rails.application.routes.draw do
     get "end_users/my_page/edit" => "end_users#edit",as: "edit_end_user"
     resources :end_users, :only => [ :update, :destroy]
     resources :items, :only => [:index,:show]
+    resources :cart_items, :only => [:index,:create,:update,:destroy]
   end
 end

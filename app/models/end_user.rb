@@ -4,6 +4,9 @@ class EndUser < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+
          validates :first_name, :second_name, :first_name_kana, :second_name_kana,
          		   :postal_code, :street_address, :phone_number,  presence: true
+
+         has_many :cart_items
 end

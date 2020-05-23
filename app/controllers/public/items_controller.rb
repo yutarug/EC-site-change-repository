@@ -8,5 +8,6 @@ class Public::ItemsController < ApplicationController
 		@item = Item.find(params[:id])
 		@end_user = current_end_user
 		@genres = Genre.all
+		@cart_item = CartItem.new
 	end
 end

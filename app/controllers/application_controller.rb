@@ -12,7 +12,7 @@ class ApplicationController < ActionController::Base
       if resource.is_a?(Admin)
           admin_top_path
       elsif resource.is_a?(EndUser)
-          public_end_user_path(current_end_user.id)
+          public_end_user_path
       end
      # if resource == Admin
         #admin_top_path
