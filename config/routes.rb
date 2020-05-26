@@ -18,6 +18,7 @@ Rails.application.routes.draw do
     resources :end_users, :only => [:index,:show,:edit,:update]
     resources :genres, :only => [:index,:create,:edit,:update]
     resources :items, :only => [:index,:create,:new,:show,:edit,:update]
+    resources :orders, :only => [:index,:show,:update]
   	#get "top" => "#top"
   end
 
@@ -27,8 +28,11 @@ Rails.application.routes.draw do
     get "/end_users/my_page" => "end_users#show",as: "end_user"
     get "end_users/my_page/edit" => "end_users#edit",as: "edit_end_user"
     delete "carts_destroy" => "cart_items#destroy_all"
+    get "/orders/confirm" => "orders#comfirm"
+    get "orderes/complete" => "orders#complete"
     resources :end_users, :only => [ :update, :destroy]
     resources :items, :only => [:index,:show]
     resources :cart_items, :only => [:index,:create,:update,:destroy]
+    resources :orders, :only => [:new,:create]
   end
 end
