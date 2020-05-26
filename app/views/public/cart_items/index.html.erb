@@ -7,7 +7,7 @@
 		</div>
 		<div class="col-xs-6"></div>
 		<div class="col-xs-2">
-			<%= link_to "カートを削除する","/carts_destroy/",method: :delete,class: "btn btn-danger"%>
+			<%= link_to "カートを削除する","/carts_destroy/",method: :delete,class: "btn btn-danger", data: { confirm: 'Are you sure?' }%>
 		</div>
 	</div>
 	<div class="row">
