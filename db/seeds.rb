@@ -11,7 +11,8 @@
 Item.create!(
 	name:"ザッハトルテ",
 	genre_id: 1,
-	price:50)
+	price:50,
+	status:true)
 Admin.create!(
     email: "a@a",
     password: "aaaaaa"
