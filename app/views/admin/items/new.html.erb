@@ -20,9 +20,13 @@
 				<div class="col-xs-4">
 					<%= f.text_field :name,autofocus: true %><br><br>
 					<%= f.text_area :introduction%><br><br>
-					 <%= f.collection_select :genre_id, Genre.where(effectice_status:false),:id, :name %><br><br>
-					 <%= f.text_field :price %>円<br><br>
-					 <%= select :status, :name,Item.statuses.keys.to_a %>
+					<%= f.collection_select :genre_id, Genre.all,:id, :name %>
+					<br><br>
+					<%= f.text_field :price %>円<br><br>
+					<%= f.radio_button :status, :true %>
+  				    <%= f.label :gender, "販売中", {value: :true, style: "display: inline-block;"} %>
+  					<%= f.radio_button :status, :false %>
+  					<%= f.label :gender, "売切れ", {value: :false, style: "display: inline-block;"} %>
 				</div>
 			</div>
 			<div class="row">

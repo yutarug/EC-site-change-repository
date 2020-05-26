@@ -7,7 +7,7 @@
 		</div>
 		<div class="col-xs-6"></div>
 		<div class="col-xs-2">
-			<%= link_to "カートを削除する"%>
+			<%= link_to "カートを削除する","/carts_destroy/",method: :delete,class: "btn btn-danger"%>
 		</div>
 	</div>
 	<div class="row">
@@ -25,12 +25,17 @@
 			<% @cart_items.each do |cart_item|%>
 				<tbody>
 					<tr>
-						<td><%= cart_item.item.name%></td>
+						<td><%=attachment_image_tag cart_item.item, :image, size:"40x20",format: "jpeg",fallback: "no_image.jpg"%><%= cart_item.item.name%></td>
 						<td><%= (cart_item.item.price*1.1).round %></td>
-						<td><%= cart_item.amount %></td>
+						<td>
+							<%= form_for(cart_item,url: public_cart_item_path(cart_item.id), method: :patch) do |f| %>
+								<%= f.select :amount,[1,2,3,4,5,6,7,8,9,]%>
+								<%= f.submit "変更する",class: "btn btn-info"%>
+							<% end %>
+						</td>
 						<td><%= (cart_item.item.price*cart_item.amount*1.1).round %></td>
 						<% total += cart_item.item.price*cart_item.amount%>
-						<td></td>
+						<td><%= link_to "削除する",public_cart_item_path(cart_item.id), method: :delete,class: "btn btn-danger"%></td>
 					</tr>
 				</tbody>
 			<% end %>
