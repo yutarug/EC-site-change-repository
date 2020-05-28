@@ -1,7 +1,7 @@
 <%= render "public/header",end_user:@end_user%>
 <br>
 <div class="container">
-	<%= form_for(@order,url: public_orders_confirm_path,method: :get) do |f|%>
+	<%= form_for(@order,url: public_orders_confirm_path,method: :get,local:true) do |f|%>
 		<div class="row">
 			<div class="col-xs-2"></div>
 			<h3>注文情報入力</h3>
@@ -18,17 +18,17 @@
 		<div class="row">
 			<h4><b>お届け先</b></h4><br>
 			<div class="col-xs-1"></div><br>
-			<%= f.radio_button :address_option,1%>
+			<%= radio_button_tag :address_option,1%>
 			<%= f.label "ご自身の住所"%><br>
 			<%= @end_user.postal_code %>
 		</div>
 		<div class="row">
-			<%= f.radio_button :address_option,2%>
+			<%= radio_button_tag :address_option,2%>
 			<%= f.label "登録済住所から選択"%>
-			<%= f.colection_select(:,@address,)%>
+			<%= collection_select(:select_address,:id,@address,:id,:address)%>
 		</div>
 		<div class="row">
-			<%= f.radio_button :address_option,3%>
+			<%= radio_button_tag :address_option,3%>
 			<%= f.label "新しいお届け先"%><br><br>
 			<div class="col-xs-3">
 				<%= f.label "郵便番号（ハイフンなし）"%><br>

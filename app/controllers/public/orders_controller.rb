@@ -15,7 +15,6 @@ class Public::OrdersController < ApplicationController
 			  	@order.street_address = @end_user.street_address
 			 	@order.postal_code = @end_user.postal_code
 		elsif params[:order][:address_option] == "2"
-
 		elsif params[:order][:address_option] == "3"
 		else redirect_to new_public_order_path
 		end
@@ -43,6 +42,6 @@ class Public::OrdersController < ApplicationController
 	end
 	private
 	def order_params
-  		params.require(:order).permit(:number,:address, :postal_code, :street_address,:payment_method,:total_fee)
+  		params.require(:order).permit(:address_option,:address, :postal_code, :street_address,:payment_method,:total_fee)
   	end
 end

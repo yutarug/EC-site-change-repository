@@ -20,8 +20,3 @@ Admin.create!(
 Genre.create!(
 	name: "ケーキ",
 	effectice_status: false)
-Address.create!(
-	end_user_id:1,
-	address: "アアア",
-	postal_code: "イイ",
-	street_address: "神戸")
