@@ -28,7 +28,7 @@ Rails.application.routes.draw do
     get "/end_users/my_page" => "end_users#show",as: "end_user"
     get "end_users/my_page/edit" => "end_users#edit",as: "edit_end_user"
     delete "carts_destroy" => "cart_items#destroy_all"
-    get "/orders/confirm" => "orders#comfirm"
+    get "/orders/confirm" => "orders#confirm"
     get "orderes/complete" => "orders#complete"
     resources :end_users, :only => [ :update, :destroy]
     resources :items, :only => [:index,:show]

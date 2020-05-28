@@ -9,4 +9,6 @@ class EndUser < ApplicationRecord
          		   :postal_code, :street_address, :phone_number,  presence: true
 
          has_many :cart_items
+         has_many :addresses
+         has_many :orders
 end
