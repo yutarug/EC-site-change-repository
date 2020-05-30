@@ -1,7 +1,7 @@
 <%= render "public/header",end_user:@end_user%>
 <br>
 <div class="container">
-	<%= form_for(@order,url: public_orders_confirm_path,method: :get,local:true) do |f|%>
+	<%= form_for(@order,url: "/orders/confirm",method: :get,local:true) do |f|%>
 		<div class="row">
 			<div class="col-xs-2"></div>
 			<h3>注文情報入力</h3>
@@ -41,6 +41,9 @@
 				<%= f.text_field :address %>
 			</div>
 		</div>
-		<%= f.submit "確認画面へ"%>
+		<div class="row">
+			<div class="col-xs-5"></div>
+			<%= f.submit "確認画面へ",class: "btn btn-success"%>
+		</div>
 	<% end %>
 </div>

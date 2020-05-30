@@ -6,16 +6,19 @@ class Public::OrdersController < ApplicationController
 	end
 	def confirm
 		@end_user = current_end_user
-		@address = Address.where(end_user_id:@end_user.id)
 		@cart_items = CartItem.where(end_user_id:@end_user.id)
 		@order =Order.new(order_params)
 		@order.postage = 800
-		if 	  params[:order][:address_option] == "1"
+		if 	  params[:address_option] == "1"
 			  	@order.address  = @end_user.first_name+@end_user.second_name
 			  	@order.street_address = @end_user.street_address
 			 	@order.postal_code = @end_user.postal_code
-		elsif params[:order][:address_option] == "2"
-		elsif params[:order][:address_option] == "3"
+		elsif params[:address_option] == "2"
+				@address = Address.find(params[:select_address][:id])
+				@order.address = @address.address
+				@order.street_address = @address.street_address
+				@order.postal_code = @address.street_address
+		elsif params[:address_option] == "3"
 		else redirect_to new_public_order_path
 		end
 	end

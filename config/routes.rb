@@ -19,6 +19,7 @@ Rails.application.routes.draw do
     resources :genres, :only => [:index,:create,:edit,:update]
     resources :items, :only => [:index,:create,:new,:show,:edit,:update]
     resources :orders, :only => [:index,:show,:update]
+    resources :order_details, :only => [:update]
   	#get "top" => "#top"
   end
 

@@ -1,0 +1,61 @@
+<%= render "admin/header"%>
+<br>
+<div class="container">
+	<div class="row">
+		<div class="col-xs-4">
+			<h3>注文詳細画面</h3>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-xs-2">
+			<p>購入者</p>
+			<P>配送先</P>
+			<P>支払い方法</P>
+			<P>注文ステータス</P>
+		</div>
+		<div class="col-xs-3">
+			<p><%= @order.address%></p>
+			<p><%= @order.postal_code%>
+			<%= @order.street_address%>
+			<%= @order.address%></p>
+			<% if @order.payment_method == true%>
+				<p>クレジットカード</p>
+			<% else%>
+				<p>銀行振込</p>
+			<% end %>
+			<%= form_for(@order,url:admin_order_path(@order),method: :patch) do |f|%>
+				<%= f.select :order_status,Order.order_statuses.keys.to_a%><%= f.submit "更新",class: "btn btn-info"%>
+			<% end %>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-xs-8">
+			<table class="table table-striped">
+				<thead>
+					<tr>
+						<th>商品名</th>
+						<th>単価（税込）</th>
+						<th>数量</th>
+						<th>小計</th>
+						<th>制作ステータス</th>
+					</tr>
+				</thead>
+				<% @order_details.each do |order_detail|%>
+					<tbody>
+						<tr>
+							<td><%= order_detail.item.name%></td>
+							<td><%= order_detail.price%></td>
+							<td><%= order_detail.amount%></td>
+							<td><%= order_detail.price*order_detail.amount%></td>
+							<td><%= form_for(order_detail,url:admin_order_detail_path(order_detail),method: :patch) do |f|%>
+									<%= f.select :production_status,OrderDetail.production_statuses.keys.to_a%>
+									<%= f.submit "更新",class: "btn btn-info"%>
+								<% end %>
+							</td>
+						</tr>
+					</tbody>
+				<% end %>
+			</table>
+		</div>
+	</div>
+</div>
