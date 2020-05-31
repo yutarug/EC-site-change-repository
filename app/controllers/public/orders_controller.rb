@@ -1,6 +1,9 @@
 class Public::OrdersController < ApplicationController
 	def new
 		@end_user = current_end_user
+		if @end_user.cart_items.count == 0
+			redirect_to public_items_path
+		end
 		@order = Order.new
 		@address = Address.where(end_user_id:@end_user.id)
 	end
