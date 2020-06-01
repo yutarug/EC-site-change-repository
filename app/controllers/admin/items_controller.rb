@@ -1,6 +1,10 @@
 class Admin::ItemsController < ApplicationController
 	def index
-		@items = Item.all
+		if params[:search].present?
+			@items = Item.search(params[:search])
+		else
+			@items = Item.all
+		end
 	end
 	def new
 		@item = Item.new
