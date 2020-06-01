@@ -10,19 +10,23 @@ class Public::OrdersController < ApplicationController
 	def confirm
 		@end_user = current_end_user
 		@cart_items = CartItem.where(end_user_id:@end_user.id)
-		@order =Order.new(order_params)
-		@order.postage = 800
-		if 	  params[:address_option] == "1"
-			  	@order.address  = @end_user.first_name+@end_user.second_name
-			  	@order.street_address = @end_user.street_address
-			 	@order.postal_code = @end_user.postal_code
-		elsif params[:address_option] == "2"
-				@address = Address.find(params[:select_address][:id])
-				@order.address = @address.address
-				@order.street_address = @address.street_address
-				@order.postal_code = @address.street_address
-		elsif params[:address_option] == "3"
-		else redirect_to new_public_order_path
+		if @cart_items.count == 0
+			redirect_to public_items_path
+		elsif
+	    	@order =Order.new(order_params)
+			@order.postage = 800
+			if 	  params[:address_option] == "1"
+			  	  @order.address  = @end_user.first_name+@end_user.second_name
+			  	  @order.street_address = @end_user.street_address
+			 	  @order.postal_code = @end_user.postal_code
+			elsif params[:address_option] == "2"
+				  @address = Address.find(params[:select_address][:id])
+				  @order.address = @address.address
+				  @order.street_address = @address.street_address
+				  @order.postal_code = @address.street_address
+			elsif params[:address_option] == "3"
+			else redirect_to new_public_order_path
+			end
 		end
 	end
 	def create
@@ -41,7 +45,7 @@ class Public::OrdersController < ApplicationController
 			@order_details.save
 		end
 		@cart_items.destroy_all
-		redirect_to  public_orderes_complete_path
+		redirect_to  public_orders_complete_path
 	end
 	def complete
 		@end_user = current_end_user
