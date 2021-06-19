@@ -18,6 +18,7 @@ Rails.application.routes.draw do
   	#get "top" => "#top"
   end
 
+
   namespace :public,path: "" do
     root to:"end_users#top"
     resources :end_users
